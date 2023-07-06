@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class Main {
     public static void main(String[] args) {
         ArrayList<Cupcake> cupcakeMenu = new ArrayList<Cupcake>();
@@ -59,6 +60,8 @@ public class Main {
             drink.setPrice(price);
             drinkMenu.add(drink);
         }
+
+        new Order(cupcakeMenu, drinkMenu);
     }
 
     private static Drink getDrinkByType(String drinkType) {
@@ -71,6 +74,8 @@ public class Main {
         }
         throw new IllegalArgumentException("Invalid drink type: " + drinkType);
     }
+
+
 }
 
 class Cupcake {
