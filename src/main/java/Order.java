@@ -134,7 +134,7 @@ class WriteToFile {
             FileWriter fw = new FileWriter("salesData.txt", true);
             PrintWriter salesWriter = new PrintWriter(fw);
 
-            for (int i = 0; o < order.size(); i++) {
+            for (int i = 0; i < order.size(); i++) {
                 salesWriter.println(order.get(i));
             }
 
