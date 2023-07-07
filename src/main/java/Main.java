@@ -3,45 +3,50 @@ import java.util.Scanner;
 
 
 public class Main {
+    public static ArrayList<Cupcake> cupcakeMenu = new ArrayList<Cupcake>();
+    public static ArrayList<Drink> drinkMenu = new ArrayList<Drink>();
     public static void main(String[] args) {
-        ArrayList<Cupcake> cupcakeMenu = new ArrayList<Cupcake>();
+//        Cupcake cupcake = new Cupcake();
+//        RedVelvet redVelvet = new RedVelvet();
+//        RedVelvet redVelvet = new RedVelvet();
+//        Chocolate chocolate = new Chocolate();
+//
+////        make into a loop?
+//        System.out.println("We are in the middle of creating the cupcake menu. We currently have three cupcakes on the menu but we need to decide on pricing.");
+//        Scanner input = new Scanner(System.in);
+//        System.out.println("We are deciding on the price for our standard cupcake. Here is the description:");
+//        cupcake.type();
+//        System.out.println("How much would you like to charge for the cupcake? (Input a numerical number taken to 2 decimal places)");
+//        String priceText = input.nextLine();
+//
+//        double price = Double.parseDouble(priceText);
+//        cupcake.setPrice(price);
+//        cupcakeMenu.add(cupcake);
+//
+//        System.out.println("We are deciding on the price for our red velvet cupcake. Here is the description:");
+//        redVelvet.type();
+//        System.out.println("How much would you like to charge for the cupcake? (Input a numerical number taken to 2 decimal places)");
+//        priceText = input.nextLine();
+//
+//        price = Double.parseDouble(priceText);
+//        cupcake.setPrice(price);
+//        cupcakeMenu.add(redVelvet);
+//
+//        System.out.println("We are deciding on the price for our chocolate cupcake. Here is the description:");
+//        chocolate.type();
+//        System.out.println("How much would you like to charge for the cupcake? (Input a numerical number taken to 2 decimal places)");
+//        priceText = input.nextLine();
+//
+//        price = Double.parseDouble(priceText);
+//        cupcake.setPrice(price);
+//        cupcakeMenu.add(chocolate);
 
-        Cupcake cupcake = new Cupcake();
-        RedVelvet redVelvet = new RedVelvet();
-        Chocolate chocolate = new Chocolate();
-
-//        make into a loop?
-        System.out.println("We are in the middle of creating the cupcake menu. We currently have three cupcakes on the menu but we need to decide on pricing.");
         Scanner input = new Scanner(System.in);
-        System.out.println("We are deciding on the price for our standard cupcake. Here is the description:");
-        cupcake.type();
-        System.out.println("How much would you like to charge for the cupcake? (Input a numerical number taken to 2 decimal places)");
-        String priceText = input.nextLine();
 
-        double price = Double.parseDouble(priceText);
-        cupcake.setPrice(price);
-        cupcakeMenu.add(cupcake);
+        addCupcakeToMenu(new Cupcake(), input);
+        addCupcakeToMenu(new RedVelvet(), input);
+        addCupcakeToMenu(new Chocolate(), input);
 
-        System.out.println("We are deciding on the price for our red velvet cupcake. Here is the description:");
-        redVelvet.type();
-        System.out.println("How much would you like to charge for the cupcake? (Input a numerical number taken to 2 decimal places)");
-        priceText = input.nextLine();
-
-        price = Double.parseDouble(priceText);
-        cupcake.setPrice(price);
-        cupcakeMenu.add(redVelvet);
-
-        System.out.println("We are deciding on the price for our chocolate cupcake. Here is the description:");
-        chocolate.type();
-        System.out.println("How much would you like to charge for the cupcake? (Input a numerical number taken to 2 decimal places)");
-        priceText = input.nextLine();
-
-        price = Double.parseDouble(priceText);
-        cupcake.setPrice(price);
-        cupcakeMenu.add(chocolate);
-
-
-        ArrayList<Drink> drinkMenu = new ArrayList<Drink>();
 //        Drink water = new Drink();
 //        Soda soda = new Soda();
 //        Milk milk = new Milk();
@@ -56,13 +61,25 @@ public class Main {
             System.out.println("We are deciding on the price for our " + drinkType + " drink. Here is the description:");
             drink.type();
             System.out.println("How much would you like to charge for the drink? (Input a numerical number taken to 2 decimal places)");
-            priceText = input.nextLine();
+            String priceText = input.nextLine();
+            double price = Double.parseDouble(priceText);
             drink.setPrice(price);
             drinkMenu.add(drink);
         }
 
         new Order(cupcakeMenu, drinkMenu);
     }
+
+    private static void addCupcakeToMenu(Cupcake cupcake, Scanner input) {
+        System.out.println("We are deciding on the price for our " + cupcake.getClass().getSimpleName() + " cupcake. Here is the description:");
+        cupcake.type();
+        System.out.println("How much would you like to charge for the cupcake? (Input a numerical number taken to 2 decimal places)");
+        String priceText = input.nextLine();
+        double price = Double.parseDouble(priceText);
+        cupcake.setPrice(price);
+        cupcakeMenu.add(cupcake);
+    }
+
 
     private static Drink getDrinkByType(String drinkType) {
         if (drinkType.equals("water")) {
